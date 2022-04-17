@@ -1,12 +1,10 @@
 from approximations.degree_approximate import degree_approximate
 from approximations.exp_approximate import exp_approximate
-from input import *
-
 from approximations.linear_approximate import linear_approximate
-
 from approximations.ln_approximate import ln_approximate
 from approximations.qub_approximate import qub_approximate
 from approximations.squad_approximate import squad_approximate
+from input import *
 
 if __name__ == "__main__":
     points = get_points()

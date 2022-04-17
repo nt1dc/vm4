@@ -9,19 +9,14 @@ def linear_approximate(points):
     n = len(points)
 
     summ_x = 0
+    summ_x_sqd = 0
+    summ_y = 0
+    summ_x_y = 0
+
     for i in range(n):
         summ_x += points[i][0]
-
-    summ_x_sqd = 0
-    for i in range(n):
         summ_x_sqd += points[i][0] ** 2
-
-    summ_y = 0
-    for i in range(n):
         summ_y += points[i][1]
-
-    summ_x_y = 0
-    for i in range(n):
         summ_x_y += points[i][0] * points[i][1]
 
     # коэффициент корреляции Пирсона
@@ -29,14 +24,13 @@ def linear_approximate(points):
     mid_y = summ_y / n
     # числитель
     summ_1 = 0
+    summ_2 = 0
+    summ_3 = 0
+
     for i in range(n):
         summ_1 += (points[i][0] - mid_x) * (points[i][1] - mid_y)
-    # знаменатель (суммы 2 и 3)
-    summ_2 = 0
-    for i in range(n):
+        # знаменатель (суммы 2 и 3)
         summ_2 += (points[i][0] - mid_x) ** 2
-    summ_3 = 0
-    for i in range(n):
         summ_3 += (points[i][1] - mid_y) ** 2
 
     try:
@@ -54,4 +48,4 @@ def linear_approximate(points):
     errors = [(points[i][1] - result_func(points[i][0])) ** 2 for i in range(n)]
     mid_sqd_err = math.sqrt(sum(errors) / n)
 
-    return Approximation("линейная",result_func, str_result_func, errors, mid_sqd_err)
+    return Approximation("линейная", result_func, str_result_func, errors, mid_sqd_err)

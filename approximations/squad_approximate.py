@@ -7,32 +7,22 @@ from calculations import calc_system
 
 def squad_approximate(points):
     n = len(points)
+    name = "квадратичная"
     summ_x = 0
+    summ_x_sqd = 0
+    summ_x_qub = 0
+    summ_x_forth = 0
+    summ_y = 0
+    summ_x_y = 0
+    summ_x_sqd_y = 0
+
     for i in range(n):
         summ_x += points[i][0]
-
-    summ_x_sqd = 0
-    for i in range(n):
         summ_x_sqd += points[i][0] ** 2
-
-    summ_x_qub = 0
-    for i in range(n):
         summ_x_qub += points[i][0] ** 3
-
-    summ_x_forth = 0
-    for i in range(n):
         summ_x_forth += points[i][0] ** 4
-
-    summ_y = 0
-    for i in range(n):
         summ_y += points[i][1]
-
-    summ_x_y = 0
-    for i in range(n):
         summ_x_y += points[i][0] * points[i][1]
-
-    summ_x_sqd_y = 0
-    for i in range(n):
         summ_x_sqd_y += (points[i][0] ** 2) * points[i][1]
 
     system = [
@@ -51,4 +41,4 @@ def squad_approximate(points):
     errors = [(points[i][1] - result_func(points[i][0])) ** 2 for i in range(n)]
     mid_sqd_err = math.sqrt(sum(errors) / n)
 
-    return Approximation("квадратичная", result_func, str_result_func, errors, mid_sqd_err)
+    return Approximation(name, result_func, str_result_func, errors, mid_sqd_err)

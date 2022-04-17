@@ -23,7 +23,6 @@ def calc_system(array, n):
     difference = epsilon + 1
     num = 0
     found_answer = True
-    errors = [0] * n
 
     while difference > epsilon:
         for i in range(n):
