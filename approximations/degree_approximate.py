@@ -12,7 +12,9 @@ def degree_approximate(input_points):
     points = []
     # добавляем в массив только те точки, которые подходят по ОДЗ логарифма
     for i in input_points:
-        if i[1] > 0 and i[0] > 0:
+        if i[0] == 0 or i[1]==0:
+            points.append([i[0] + 0.001, i[1] + 0.001])
+        if i[0] > 0:
             points.append(i)
 
     # if len(points) < 2:, но это будет неидеальная аппроксимация
@@ -32,6 +34,7 @@ def degree_approximate(input_points):
         summ_x_y += math.log(points[i][0]) * math.log(points[i][1])
 
     try:
+
         ans = calc_system([[summ_x_sqd, summ_x, summ_x_y], [summ_x, n, summ_y]], 2)
     except Exception:
         return Approximation(name, None, None, None, None)

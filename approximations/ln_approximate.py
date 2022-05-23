@@ -11,6 +11,8 @@ def ln_approximate(input_points):
     points = []
 
     for i in input_points:
+        if i[0] == 0:
+            points.append([i[0] + 0.001, i[1] + 0.001])
         if i[0] > 0:
             points.append(i)
 
@@ -20,16 +22,16 @@ def ln_approximate(input_points):
 
     n = len(points)
 
-    summ_x = 0
-    summ_x_sqd = 0
-    summ_y = 0
-    summ_x_y = 0
+    summ_x = 0.0
+    summ_x_sqd = 0.0
+    summ_y = 0.0
+    summ_x_y = 0.0
 
-    for i in range(n):
-        summ_x += math.log(points[i][0])
-        summ_x_sqd += math.log(points[i][0]) ** 2
-        summ_y += points[i][1]
-        summ_x_y += math.log(points[i][0]) * points[i][1]
+    for point in points:
+        summ_x += math.log(point[0])
+        summ_x_sqd += math.log(point[0]) ** 2
+        summ_y += point[1]
+        summ_x_y += math.log(point[0]) * point[1]
 
     try:
         ans = calc_system([[summ_x_sqd, summ_x, summ_x_y], [summ_x, n, summ_y]], 2)

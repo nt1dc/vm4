@@ -1,13 +1,12 @@
-# Линейная аппроксимация
 import math
 
 from Approximation_class_file import Approximation
 from calculations import calc_system
 
 
+# Линейная аппроксимация
 def linear_approximate(points):
     n = len(points)
-
     summ_x = 0
     summ_x_sqd = 0
     summ_y = 0

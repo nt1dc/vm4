@@ -1,5 +1,6 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib import cm
 
 from calculations import get_points_func
 from functions import input_func

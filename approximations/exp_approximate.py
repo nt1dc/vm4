@@ -12,10 +12,12 @@ def exp_approximate(input_points):
     points = []
 
     for i in input_points:
-        if i[1] > 0:
+        if i[0] == 0:
+            points.append([i[0] + 0.001, i[1] + 0.001])
+        if i[0] > 0:
             points.append(i)
 
-    # if len(points) < 2:, но это будет неидеальная аппроксимация
+    # if len(points) < 2:но это будет неидеальная аппроксимация
     if len(points) != len(input_points):
         return Approximation(name, None, None, None, None)
 
